@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Dashboard</title>
+<style>
+  .search-form { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    padding: 20px; 
+    background: #f2f2f2; /* Just to visually differentiate the form area */
+  }
+  .search-form > div { 
+    flex-basis: calc(50% - 10px); /* Subtract gap from 100% divided by two columns */
+    min-width: 120px; 
+  }
+  .search-form label { 
+    display: block; 
+    margin-bottom: 0.5em; 
+  }
+  .search-form input[type="text"], 
+  .search-form select { 
+    width: 90%; 
+    padding: 10px; 
+    margin-bottom: 10px; /* Add space below inputs/selects */
+    border: 1px solid #ccc; /* Just to give some border */
+    border-radius: 5px; /* Rounded corners for inputs/selects */
+  }
+  .search-form button { 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; 
+    font-weight: bold;
+  }
+  .search-form .flex-row {
+    display: flex;
+    gap: 10px;
+  }
+  .search-form .flex-row > div {
+    flex: 1;
+  }
+  /* Adjust button width */
+  .search-form .flex-row button, 
+  .search-form .search-button {
+    flex: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="search-form">
+    <div>
+        <label for="purpose">Purpose</label>
+        <select id="purpose" name="purpose">
+            <option value="buy">Buy</option>
+            <option value="rent">Rent</option>
+        </select>
+    </div>
+    <div>
+        <label for="city">City</label>
+        <select id="city" name="city">
+            <option value="islamabad">Islamabad</option>
+            <option value="karachi">Karachi</option>
+            <option value="lahore">Lahore</option>
+            <option value="rawalpindi">Rawalpindi</option>
+            <option value="abbottabad">Abbottabad</option>
+            <option value="abdul hakim">Abdul Hakim</option>
+            <option value="ahmedpur east">Ahmedpur East</option>
+            <option value="alipur">Alipur</option>
+            <option value="arifwala">Arifwala</option>
+            <option value="astore">Astore</option>
+            <option value="attock">Attock</option>
+            <option value="awaran">Awaran</option>
+            <option value="badin">Badin</option>
+            <option value="bagh">Bagh</option>
+            <option value="bahawalnagar">Bahawalnagar</option>
+            <option value="bahawalpur">Bahawalpur</option>
+            <option value="bannu">Bannu</option>
+            <option value="barnala">Barnala</option>
+            <option value="bhakkar">Bhakkar</option>
+            <option value="bhalwal">Bhalwal</option>
+            <option value="bhimber">Bhimber</option>
+            <option value="buner">Buner</option>
+            <option value="burewala">Burewala</option>
+            <option value="chaghi">Chaghi</option>
+            <option value="chakwal">Chakwal</option>
+            <option value="choa saidan shah">Choa Saidan Shah</option>
+            <option value="charsadda">Charsadda</option>
+            <option value="chichawatni">Chichawatni</option>
+            <option value="chiniot">Chiniot</option>
+            <option value="chishtian sharif">Chishtian Sharif</option>
+            <option value="chitral">Chitral</option>
+            <option value="chunian">Chunian</option>
+            <option value="dadu">Dadu</option>
+            <option value="daharki">Daharki</option>
+            <option value="daska">Daska</option>
+            <option value="depalpur">Depalpur</option>
+            <option value="dera ghazi khan">Dera Ghazi Khan</option>
+            <option value="dera ismail khan">Dera Ismail Khan</option>
+            <option value="dijkot">Dijkot</option>
+            <option value="dina">Dina</option>
+            <option value="duniya pur">Duniya Pur</option>
+            <option value="faisalabad">Faisalabad</option>
+            <option value="fata">FATA</option>
+            <option value="fateh jang">Fateh Jang</option>
+            <option value="gaarho">Gaarho</option>
+            <option value="gadoon">Gadoon</option>
+            <option value="galyat">Galyat</option>
+            <option value="gharo">Gharo</option>
+            <option value="ghotki">Ghotki</option>
+            <option value="gilgit">Gilgit</option>
+            <option value="gojra">Gojra</option>
+            <option value="gujar khan">Gujar Khan</option>
+            <option value="gujranwala">Gujranwala</option>
+            <option value="ghakhar">Ghakhar</option>
+            <option value="gujrat">Gujrat</option>
+            <option value="gwadar">Gwadar</option>
+            <option value="hafizabad">Hafizabad</option>
+            <option value="hangu">Hangu</option>
+            <option value="harappa">Harappa</option>
+            <option value="haripur">Haripur</option>
+            <option value="haroonabad">Haroonabad</option>
+            <option value="hasilpur">Hasilpur</option>
+            <option value="hassan abdal">Hassan Abdal</option>
+            <option value="haveli lakha">Haveli Lakha</option>
+            <option value="hazro">Hazro</option>
+            <option value="hub (hub chowki)">Hub (Hub Chowki)</option>
+            <option value="hunza">Hunza</option>
+            <option value="hyderabad">Hyderabad</option>
+            <option value="jacobabad">Jacobabad</option>
+            <option value="jahanian">Jahanian</option>
+            <option value="jalalpur jattan">Jalalpur Jattan</option>
+            <option value="jampur">Jampur</option>
+            <option value="jamshoro">Jamshoro</option>
+            <option value="jauharabad">Jauharabad</option>
+            <option value="jhang">Jhang</option>
+            <option value="jhelum">Jhelum</option>
+            <option value="kabirwala">Kabirwala</option>
+            <option value="kaghan">Kaghan</option>
+            <option value="kahror pakka">Kahror Pakka</option>
+            <option value="kalat">Kalat</option>
+            <option value="kamalia">Kamalia</option>
+            <option value="kamoki">Kamoki</option>
+            <option value="karak">Karak</option>
+            <option value="kasur">Kasur</option>
+            <option value="khairpur">Khairpur</option>
+            <option value="khanewal">Khanewal</option>
+            <option value="khanpur">Khanpur</option>
+            <option value="kharian">Kharian</option>
+            <option value="khipro">Khipro</option>
+            <option value="khushab">Khushab</option>
+            <option value="khuzdar">Khuzdar</option>
+            <option value="kohat">Kohat</option>
+            <option value="kot addu">Kot Addu</option>
+            <option value="kotli">Kotli</option>
+            <option value="kotri">Kotri</option>
+            <option value="lakki marwat">Lakki Marwat</option>
+            <option value="lalamusa">Lalamusa</option>
+            <option value="larkana">Larkana</option>
+            <option value="lasbela">Lasbela</option>
+            <option value="layyah">Layyah</option>
+            <option value="liaquatpur">Liaquatpur</option>
+            <option value="lodhran">Lodhran</option>
+            <option value="loralai">Loralai</option>
+            <option value="lower dir">Lower Dir</option>
+            <option value="mailsi">Mailsi</option>
+            <option value="makran">Makran</option>
+            <option value="malakand">Malakand</option>
+            <option value="mandi bahauddin">Mandi Bahauddin</option>
+            <option value="mangla">Mangla</option>
+            <option value="mansehra">Mansehra</option>
+            <option value="mardan">Mardan</option>
+            <option value="matiari">Matiari</option>
+            <option value="mian channu">Mian Channu</option>
+            <option value="mianwali">Mianwali</option>
+            <option value="mirpur">Mirpur</option>
+            <option value="mirpur khas">Mirpur Khas</option>
+            <option value="mirpur sakro">Mirpur Sakro</option>
+            <option value="multan">Multan</option>
+            <option value="muridke">Muridke</option>
+            <option value="murree">Murree</option>
+            <option value="muzaffarabad">Muzaffarabad</option>
+            <option value="muzaffargarh">Muzaffargarh</option>
+            <option value="nankana sahib">Nankana Sahib</option>
+            <option value="naran">Naran</option>
+            <option value="narowal">Narowal</option>
+            <option value="nasirabad">Nasirabad</option>
+            <option value="naushahro feroze">Naushahro Feroze</option>
+            <option value="nawabshah">Nawabshah</option>
+            <option value="neelum">Neelum</option>
+            <option value="nowshera">Nowshera</option>
+            <option value="okara">Okara</option>
+            <option value="others">Others</option>
+            <option value="others azad kashmir">Others Azad Kashmir</option>
+            <option value="others balochistan">Others Balochistan</option>
+            <option value="others gilgit baltistan">Others Gilgit Baltistan</option>
+            <option value="others khyber pakhtunkhwa">Others Khyber Pakhtunkhwa</option>
+            <option value="others punjab">Others Punjab</option>
+            <option value="others sindh">Others Sindh</option>
+            <option value="pakpattan">Pakpattan</option>
+            <option value="peshawar">Peshawar</option>
+            <option value="pind dadan khan">Pind Dadan Khan</option>
+            <option value="pindi bhattian">Pindi Bhattian</option>
+            <option value="pir mahal">Pir Mahal</option>
+            <option value="quetta">Quetta</option>
+            <option value="raiwind">Raiwind</option>
+            <option value="rahim yar khan">Rahim Yar Khan</option>
+            <option value="rajanpur">Rajanpur</option>
+            <option value="ratwal">Ratwal</option>
+            <option value="rawalkot">Rawalkot</option>
+            <option value="rohri">Rohri</option>
+            <option value="pasrur">Pasrur</option>
+            <option value="sadiqabad">Sadiqabad</option>
+            <option value="sahiwal">Sahiwal</option>
+            <option value="samundri">Samundri</option>
+            <option value="sanghar">Sanghar</option>
+            <option value="sangla hill">Sangla Hill</option>
+            <option value="sarai alamgir">Sarai Alamgir</option>
+            <option value="sargodha">Sargodha</option>
+            <option value="sehwan">Sehwan</option>
+            <option value="shabqadar">Shabqadar</option>
+            <option value="shahdadpur">Shahdadpur</option>
+            <option value="shahkot">Shahkot</option>
+            <option value="shakargarh">Shakargarh</option>
+            <option value="sheikhupura">Sheikhupura</option>
+            <option value="shikarpur">Shikarpur</option>
+            <option value="shorkot">Shorkot</option>
+            <option value="sialkot">Sialkot</option>
+            <option value="sibi">Sibi</option>
+            <option value="skardu">Skardu</option>
+            <option value="sudhnoti">Sudhnoti</option>
+            <option value="sujawal">Sujawal</option>
+            <option value="sukkur">Sukkur</option>
+            <option value="swabi">Swabi</option>
+            <option value="swat">Swat</option>
+            <option value="talagang">Talagang</option>
+            <option value="tando adam">Tando Adam</option>
+            <option value="tando allahyar">Tando Allahyar</option>
+            <option value="tando bago">Tando Bago</option>
+            <option value="tando muhammad khan">Tando Muhammad Khan</option>
+            <option value="taxila">Taxila</option>
+            <option value="tharparkar">Tharparkar</option>
+            <option value="thatta">Thatta</option>
+            <option value="toba tek singh">Toba Tek Singh</option>
+            <option value="turbat">Turbat</option>
+            <option value="vehari">Vehari</option>
+            <option value="wah">Wah</option>
+            <option value="wazirabad">Wazirabad</option>
+            <option value="waziristan">Waziristan</option>
+            <option value="yazman">Yazman</option>
+            <option value="zhob">Zhob</option>
+            
+        </select>
+    </div>
+    <div>
+        <label for="category-select">Property Category</label>
+        <select id="category-select" name="category">
+            <option value="homes_category">Homes</option>
+            <option value="plots_category">Plots</option>
+            <option value="commercial_category">Commercial</option>
+        </select>
+        <label for="property-type">Property Type</label>
+        <select id="property-type" name="property_type">
+            <!-- Options will be dynamically inserted here -->
+        </select>
+
+    </div>
+    <div class="flex-row">
+        <div>
+            <label for="min-area">MIN Area:</label>
+            <input type="text" id="min-area" name="min_area" placeholder="Enter min area" />
+        </div>
+        <div>
+            <label for="max-area">MAX Area:</label>
+            <input type="text" id="max-area" name="max_area" placeholder="Enter max area " />
+        </div>
+    </div>
+    <div class="flex-row">
+        <div>
+            <label for="min-price">MIN Price:</label>
+            <input type="text" id="min-price" name="min_price" placeholder="Enter min price" />
+        </div>
+        <div>
+            <label for="max-price">MAX Price:</label>
+            <input type="text" id="max-price" name="max_price" placeholder="Enter max price " />
+        </div>
+    </div>
+    <div id="beds-container"> 
+        <label for="beds">Beds:</label>
+        <input type="text" id="beds" name="beds" placeholder="Enter number of beds or 'All'" />
+    </div>
+    <div id="baths-container"> 
+        <label for="baths">Baths:</label>
+        <input type="text" id="baths" name="baths" placeholder="Enter number of baths or 'All'" />
+    </div>
+    
+    <div>
+        <label for="keyword">Keyword:</label>
+        <input type="text" id="keyword" name="keyword" placeholder="Enter keyword" />
+    </div>
+    <div>
+        <label for="more-options">More Options:</label>
+        <input type="text" id="more-options" name="more_options" placeholder="Enter options count or '0 Selected'" />
+    </div>
+    <div>
+        <button type="submit" id="search-button">Search</button>
+    </div>
+    
+</div>
+   <script>
+// Assuming you have the 'categoryOptions' and event listener setup for 'category-select' from the previous example
+
+document.getElementById('category-select').addEventListener('change', function() {
+    const selectedCategory = this.value;
+    // Determine visibility based on selected category
+    const bedsAndBathsVisibility = (selectedCategory === 'homes_category');
+
+    // Show or hide beds and baths based on the category
+    document.getElementById('beds-container').style.display = bedsAndBathsVisibility ? 'block' : 'none';
+    document.getElementById('baths-container').style.display = bedsAndBathsVisibility ? 'block' : 'none';
+    
+    // Update the property type dropdown based on the selected category
+    const propertyTypeSelect = document.getElementById('property-type');
+    // Clear existing options
+    while (propertyTypeSelect.options.length > 0) { 
+        propertyTypeSelect.remove(0); 
+    }
+
+    // Add new options for the selected category
+    categoryOptions[selectedCategory].forEach(option => {
+        const newOption = new Option(option.text, option.value);
+        propertyTypeSelect.add(newOption);
+    });
+});
+
+// Trigger change to initialize dropdowns and visibility on page load
+document.getElementById('category-select').dispatchEvent(new Event('change'));
+</script>
+
+  <script>
+    const categoryOptions = {
+        homes_category: [
+            {value: "house", text: "House"},
+            {value: "upper_portion", text: "Upper Portion"},
+            {value: "farm_house", text: "Farm House"},
+            {value: "penthouse", text: "Penthouse"},
+            {value: "flat", text: "Flat"},
+            {value: "lower_portion", text: "Lower Portion"},
+            {value: "room", text: "Room"}
+        ],
+        plots_category: [
+            {value: "residential_plot", text: "Residential Plot"},
+            {value: "agricultural_land", text: "Agricultural Land"},
+            {value: "plot_file", text: "Plot File"},
+            {value: "commercial_plot", text: "Commercial Plot"},
+            {value: "industrial_land", text: "Industrial Land"},
+            {value: "plot_form", text: "Plot Form"}
+        ],
+        commercial_category: [
+            {value: "office", text: "Office"},
+            {value: "warehouse", text: "Warehouse"},
+            {value: "building", text: "Building"},
+            {value: "shop", text: "Shop"},
+            {value: "factory", text: "Factory"},
+            {value: "other", text: "Other"}
+        ]
+    };
+    document.getElementById('category-select').addEventListener('change', function() {
+        const propertyTypeSelect = document.getElementById('property-type');
+        const selectedCategory = this.value;
+    
+        
+        while (propertyTypeSelect.options.length > 0) { 
+            propertyTypeSelect.remove(0); 
+        }
+    
+        
+        categoryOptions[selectedCategory].forEach(option => {
+            const newOption = new Option(option.text, option.value);
+            propertyTypeSelect.add(newOption);
+        });
+    });
+    document.getElementById('category-select').dispatchEvent(new Event('change'));
+    </script>
+    <script>
+        document.getElementById('search-button').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            const formData = {
+                purpose: document.getElementById('purpose').value,
+                city: document.getElementById('city').value,
+                category: document.getElementById('category-select').value,
+                propertyType: document.getElementById('property-type').value,
+                minArea: document.getElementById('min-area').value,
+                maxArea: document.getElementById('max-area').value,
+                minPrice: document.getElementById('min-price').value,
+                maxPrice: document.getElementById('max-price').value,
+                beds: document.getElementById('beds').value,
+                baths: document.getElementById('baths').value,
+                keyword: document.getElementById('keyword').value,
+                moreOptions: document.getElementById('more-options').value
+            };
+    
+            fetch('/save-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Form data has been saved.');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+    
+    <script>
+        document.getElementById('search-button').addEventListener('click', function() {
+            console.log('Button clicked!');
+        });
+    </script>
+    
+  
+
+</body>
+</html>
